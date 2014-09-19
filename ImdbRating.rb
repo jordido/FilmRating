@@ -8,17 +8,13 @@ class Rating
 	end
 
 	def push_stars (rating)
-		film_stars = []
-		(0..rating-1).each do |x|
-			film_stars[x] = "*"
-		end
-		(rating..9).each do |x|
-			film_stars[x] = " "
-		end
+		film_stars = ""
+		film_stars << "*" * rating + " " * (10 - rating)
 		@stars_map << film_stars
 	end
 
 	def print_stars
+		puts @stars_map.inspect
 		@print_line = ""
 		i = 9
 		while i >= 0 do 
