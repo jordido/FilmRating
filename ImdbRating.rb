@@ -20,15 +20,14 @@ class Rating
 		end
 	end
 
-	def print_stars		# last method to be called
-		@print_line = ""
-		puts @stars_map.inspect
+	def print_stars
+		print_line = ""
 		for i in 9.downto 0
 			@stars_map.each do |x|
-				@print_line << x[i].to_s		# build a line to be printed, containing the i element of each stars_map line
+				print_line << x[i].to_s		# build a line to be printed, containing the i element of each stars_map line
 			end
-			puts @print_line			# this is the output
-			@print_line = ""
+			puts print_line			# this is the output
+			print_line = ""
 		end
 	end
 

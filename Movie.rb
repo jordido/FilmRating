@@ -17,10 +17,6 @@ class Movie
 		@title
 	end
 
-	def index
-		@index
-	end
-
 	def get_rating
 		rating = Imdb::Search.new(@title).movies.first.rating
 	end
