@@ -5,6 +5,15 @@ class Rating
 	def initialize (file)
 		@file = file
 		@stars_map = []
+		rating_of_films
+	end
+
+	def rating_of_films # for initializing 
+		File.open(@file) do |films|
+				films.each do |film_title| 
+					search_rating(film_title)
+				end
+		end
 	end
 
 	def push_stars (rating)
@@ -14,7 +23,6 @@ class Rating
 	end
 
 	def print_stars
-		puts @stars_map.inspect
 		@print_line = ""
 		i = 9
 		while i >= 0 do 
@@ -27,18 +35,13 @@ class Rating
 		end
 	end
 
-	def rating_of_films
-		File.open(@file) do |films|
-				films.each do |film_title| 
-					f = Imdb::Search.new(film_title)
-					rating = f.movies.first.rating
-					push_stars(rating.to_i)
-					puts rating
-				end
-		end
-		print_stars
+	def search_rating(film_title)
+		f = Imdb::Search.new(film_title)
+		rating = f.movies.first.rating
+		push_stars(rating.to_i)
 	end
+
 
 end
 
-R = Rating.new('FilmsList.txt').rating_of_films
+Rating.new('FilmsList.txt').print_stars
