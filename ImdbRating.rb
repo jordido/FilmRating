@@ -1,5 +1,4 @@
 require 'imdb'
-require 'pry'
 
 class Rating
 	def initialize (file)
@@ -22,13 +21,13 @@ class Rating
 		@stars_map << film_stars
 	end
 
-	def print_stars
+	def print_stars		# last method to be called
 		@print_line = ""
 		for i in 9.downto 0
 			@stars_map.each do |x|
-				@print_line << x[i]
+				@print_line << x[i]		# build a line to be printed, containing the i element of each stars_map line
 			end
-			puts @print_line
+			puts @print_line			# this is the output
 			@print_line = ""
 		end
 	end
@@ -37,8 +36,6 @@ class Rating
 		rating = Imdb::Search.new(film_title).movies.first.rating
 		push_film_stars(rating.to_i)
 	end
-
-
 end
 
 Rating.new('FilmsList.txt').print_stars
