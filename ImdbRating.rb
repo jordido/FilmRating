@@ -24,20 +24,17 @@ class Rating
 
 	def print_stars
 		@print_line = ""
-		i = 9
-		while i >= 0 do 
+		for i in 9.downto 0
 			@stars_map.each do |x|
 				@print_line << x[i]
 			end
 			puts @print_line
 			@print_line = ""
-			i -= 1
 		end
 	end
 
 	def search_rating(film_title)
-		f = Imdb::Search.new(film_title)
-		rating = f.movies.first.rating
+		rating = Imdb::Search.new(film_title).movies.first.rating
 		push_film_stars(rating.to_i)
 	end
 
