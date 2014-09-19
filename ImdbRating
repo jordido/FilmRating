@@ -1,0 +1,13 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "/home/jordi/Ironhack/ruby/ChessValidator"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "."
+		}
+	]
+}
