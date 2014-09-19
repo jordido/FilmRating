@@ -12,12 +12,16 @@ class Rating
 	def load_film_list # for initializing ratings
 		File.open(@file) do |films|
 				films.each do |film_title| 
-					movie = Movie.new(film_title)
-					@stars_map << movie.push_film_stars
-					@list_of_films <<  film_title # OR film_title directly
+					create_movie(film_title)
 				end
 				
 		end
+	end
+	
+	def create_movie(film_title)
+		movie = Movie.new(film_title)
+		@stars_map << movie.push_film_stars
+		@list_of_films <<  film_title # OR film_title directly
 	end
 
 	def print_stars
