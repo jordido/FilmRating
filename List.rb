@@ -8,10 +8,8 @@ class List
 	end
 
 	def print
-		index = 1
-		@list.each do |element|
-			puts index.to_s + ". " + element
-			index += 1
+		@list.each.with_index do |element, index|
+			puts (index + 1).to_s + ". " + element
 		end
 	end
 end

@@ -4,28 +4,12 @@ require_relative 'List'
 
 class Rating
 	def initialize (file)
-		@file = file
 		@stars_map = []   # Array of strings (1 per film) containing n-stars 
 		@titles_list = List.new
-		load_film_list
-	end
-
-	def load_film_list # for initializing ratings
-		File.open(@file) do |films|
-			films.each do |film_title| 
-				create_movie(film_title)
-			end				
-		end
-	end
-
-	def create_movie(film_title)
-		movie = Movie.new(film_title)
-		@stars_map << movie.push_film_stars
-		@titles_list.add(film_title)
+		load_film_list(file)
 	end
 
 	def print_stars
-		print_line = ""
 		for i in 9.downto 0
 			print_stars_line(i)
 		end
@@ -43,8 +27,22 @@ class Rating
 		@titles_list.print
 	end
 
+	private
+	def load_film_list(file) # for initializing ratings
+		File.open(file) do |films|
+			films.each do |film_title| 
+				create_movie(film_title)
+			end				
+		end
+	end
+
+	def create_movie(film_title)
+		movie = Movie.new(film_title)
+		@stars_map << movie.push_film_stars
+		@titles_list.add(film_title)
+	end
 end
 
-R =Rating.new('FilmsList.txt')
-R.print_stars
-R.print_titles
+r = Rating.new('FilmsList.txt')
+r.print_stars
+r.print_titles

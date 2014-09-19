@@ -1,6 +1,5 @@
 class Movie
-	attr_accessor :title
-	attr_accessor :rating
+	attr_accessor :title, :rating
 
 	def initialize (title)
 		@title = title
@@ -8,14 +7,11 @@ class Movie
 	end
 
 	def push_film_stars
-		@film_stars = ""
-		@film_stars << "*" * self.rating + " " * (10 - self.rating)
+		film_stars = ""
+		film_stars << "*" * self.rating + " " * (10 - self.rating)
 	end
 
-	def title
-		@title
-	end
-
+	private
 	def get_rating
 		rating = Imdb::Search.new(@title).movies.first.rating
 	end
