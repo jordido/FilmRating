@@ -1,7 +1,6 @@
 class Movie
 	attr_accessor :title
 	attr_accessor :rating
-	attr_accessor :index
 
 	def initialize (title)
 		@title = title

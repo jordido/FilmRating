@@ -17,7 +17,7 @@ class Rating
 				
 		end
 	end
-	
+
 	def create_movie(film_title)
 		movie = Movie.new(film_title)
 		@stars_map << movie.push_film_stars
@@ -27,14 +27,18 @@ class Rating
 	def print_stars
 		print_line = ""
 		for i in 9.downto 0
-			@stars_map.each do |x|
-				print_line << x[i].to_s		# build a line to be printed, containing the i element of each stars_map line
-			end
-			puts print_line			# this is the output
-			print_line = ""
+			print_stars_line(i)
 		end
 	end
 
+	def print_stars_line(index)
+		print_line = ""
+		@stars_map.each do |x|
+				print_line << x[index].to_s		# build a line to be printed, containing the i element of each stars_map line
+		end
+		puts print_line			# this is the output
+	end
+			
 	def print_titles
 		index = 1
 		@list_of_films.each do |title|
