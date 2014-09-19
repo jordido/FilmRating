@@ -1,12 +1,12 @@
 require 'imdb'
 require_relative 'Movie'
-require_relative 'FilmList'
+require_relative 'List'
 
 class Rating
 	def initialize (file)
 		@file = file
 		@stars_map = []   # Array of strings (1 per film) containing n-stars 
-		@titles_list = FilmList.new
+		@titles_list = List.new
 		load_film_list
 	end
 
